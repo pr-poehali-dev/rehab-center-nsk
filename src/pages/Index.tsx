@@ -48,10 +48,10 @@ const programs = [
 ];
 
 const team = [
-  { name: 'Андрей Соколов', role: 'Руководитель центра', exp: '15 лет в наркологии' },
-  { name: 'Елена Морозова', role: 'Клинический психолог', exp: '12 лет практики' },
-  { name: 'Дмитрий Ким', role: 'Психотерапевт', exp: '10 лет практики' },
-  { name: 'Ольга Лебедева', role: 'Семейный консультант', exp: '8 лет практики' },
+  { name: 'Евгений Викторович', role: 'Директор. Клинический психолог', exp: 'Стаж 8 лет', photo: 'https://cdn.poehali.dev/projects/bea59474-33cc-42c6-8148-bdef0d3b952d/bucket/25d915a7-4f73-4dd0-9444-a661a6e03677.jpeg' },
+  { name: 'Елена Морозова', role: 'Клинический психолог', exp: '12 лет практики', photo: '' },
+  { name: 'Дмитрий Ким', role: 'Психотерапевт', exp: '10 лет практики', photo: '' },
+  { name: 'Ольга Лебедева', role: 'Семейный консультант', exp: '8 лет практики', photo: '' },
 ];
 
 const gallery = ['Mountain', 'TreePine', 'Sunrise', 'Home', 'BookOpen', 'Coffee'];
@@ -225,7 +225,10 @@ const Index = () => {
             {team.map((t) => (
               <div key={t.name} className="group">
                 <div className="aspect-[3/4] rounded-xl bg-accent grid place-items-center mb-4 overflow-hidden">
-                  <Icon name="User" size={64} className="text-primary/40 group-hover:scale-110 transition-transform" />
+                  {t.photo
+                    ? <img src={t.photo} alt={t.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    : <Icon name="User" size={64} className="text-primary/40 group-hover:scale-110 transition-transform" />
+                  }
                 </div>
                 <h3 className="font-display text-2xl font-semibold">{t.name}</h3>
                 <p className="text-primary text-sm">{t.role}</p>

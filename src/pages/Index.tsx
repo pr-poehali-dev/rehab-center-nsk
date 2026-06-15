@@ -58,6 +58,14 @@ const gallery = ['Mountain', 'TreePine', 'Sunrise', 'Home', 'BookOpen', 'Coffee'
 
 const Index = () => {
   const [menu, setMenu] = useState(false);
+  const [phone, setPhone] = useState('');
+  const [sent, setSent] = useState(false);
+
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (phone.trim().length < 6) return;
+    setSent(true);
+  };
 
   const scrollTo = (id: string) => {
     setMenu(false);
@@ -282,14 +290,29 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            <form className="bg-secondary/50 rounded-2xl p-8 border border-border space-y-5" onSubmit={(e) => e.preventDefault()}>
-              <h3 className="font-display text-2xl font-semibold">Оставьте заявку</h3>
-              <input className="w-full rounded-lg border border-input bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-ring" placeholder="Ваше имя" />
-              <input className="w-full rounded-lg border border-input bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-ring" placeholder="Телефон" />
-              <textarea rows={3} className="w-full rounded-lg border border-input bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-ring resize-none" placeholder="Опишите ситуацию (необязательно)" />
-              <Button className="rounded-full w-full" size="lg">Отправить заявку</Button>
-              <p className="text-xs text-muted-foreground text-center">Нажимая кнопку, вы соглашаетесь на обработку данных. Гарантируем анонимность.</p>
-            </form>
+            {sent ? (
+              <div className="bg-secondary/50 rounded-2xl p-8 border border-border text-center flex flex-col items-center justify-center min-h-[280px]">
+                <span className="grid place-items-center w-16 h-16 rounded-full bg-primary text-primary-foreground mb-5">
+                  <Icon name="Check" size={30} />
+                </span>
+                <h3 className="font-display text-3xl font-semibold mb-3">Спасибо!</h3>
+                <p className="text-muted-foreground max-w-xs">Мы перезвоним вам в ближайшее время. Всё анонимно и конфиденциально.</p>
+              </div>
+            ) : (
+              <form className="bg-secondary/50 rounded-2xl p-8 border border-border space-y-5" onSubmit={submit}>
+                <h3 className="font-display text-2xl font-semibold">Оставьте номер</h3>
+                <p className="text-muted-foreground text-sm">Перезвоним и бесплатно проконсультируем — без лишних вопросов.</p>
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="w-full rounded-lg border border-input bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-ring"
+                  placeholder="+7 (___) ___-__-__"
+                />
+                <Button type="submit" className="rounded-full w-full" size="lg">Жду звонка</Button>
+                <p className="text-xs text-muted-foreground text-center">Нажимая кнопку, вы соглашаетесь на обработку данных. Гарантируем анонимность.</p>
+              </form>
+            )}
           </div>
         </div>
       </section>

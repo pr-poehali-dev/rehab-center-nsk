@@ -81,7 +81,7 @@ const Index = () => {
             <span className="grid place-items-center w-9 h-9 rounded-full bg-primary text-primary-foreground">
               <Icon name="Sprout" size={18} />
             </span>
-            <span className="font-display text-2xl font-semibold tracking-tight">Новый путь</span>
+            <span className="font-display text-2xl font-semibold tracking-tight">Один Шаг</span>
           </button>
           <nav className="hidden md:flex items-center gap-8 text-sm">
             {nav.map((n) => (
@@ -325,9 +325,9 @@ const Index = () => {
         <div className="container flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
             <Icon name="Sprout" size={16} className="text-primary" />
-            <span className="font-display text-lg font-semibold text-foreground">Новый путь</span>
+            <span className="font-display text-lg font-semibold text-foreground">Один Шаг</span>
           </div>
-          <p>© 2026 Реабилитационный центр «Новый путь». Новосибирская область.</p>
+          <p>© 2026 Реабилитационный центр «Один Шаг». Новосибирская область.</p>
         </div>
       </footer>
     </div>
